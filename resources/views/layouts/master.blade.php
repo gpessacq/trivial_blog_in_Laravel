@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Document</title>
+  <title>Blog</title>
   <link rel="stylesheet" href="/css/app.css">
 </head>
 
@@ -12,5 +12,8 @@
     @yield('content')
   </div>
 
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+  
 </body>
 </html>
