@@ -8,25 +8,9 @@
 
   <div class="col-md-6">
 
-    @if($errors->any())
-      <ul class="alert alert-danger">
-        @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    @endif
+    @include('partials.errors')
+    @include('partials.form', ['submit' => 'Add Blog'])
 
-    <div class="form-group">
-      {!! Form::label('title', 'Blog title') !!}
-      {!! Form::text('title', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-      {!! Form::label('text', 'Blog text') !!}
-      {!! Form::textarea('text', null, ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
-      {!! Form::submit('Add Blog', ['class' => 'btn btn-primary']) !!}
-    </div>
   </div>
 {!! Form::close() !!}
 

@@ -25,6 +25,11 @@ class BlogsController extends Controller{
     return view('blogs.show')->with('blog', $blog);
   }
 
+  public function edit($id){
+    $blog = Blog::findOrFail($id);
+    return view('blogs.edit')->with('blog', $blog);
+  }
+
   public function create(){
     return view('blogs.create');
   }
@@ -34,4 +39,17 @@ class BlogsController extends Controller{
     Blog::create($input);
     return redirect('blogs');
   }
+
+  public function update(BlogRequest $request, $id){
+    $blog = Blog::findOrFail($id);
+    $blog->update($request->all());
+    return redirect('blogs');
+  }
+
+  public function destroy($id){
+    Blog::destroy($id);
+    return redirect('blogs');    
+  }
+
+
 }
