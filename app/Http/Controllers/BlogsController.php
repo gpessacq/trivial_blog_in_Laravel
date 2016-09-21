@@ -9,8 +9,12 @@ use Request;
 use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
 
-class BlogsController extends Controller
-{
+class BlogsController extends Controller{
+
+  public function __construct(){
+    $this->middleware('auth', ['only' => ['create', 'store']]);
+  }
+
   public function index(){
     $blogs = Blog::latest()->get();
     return view('blogs.index')->with('blogs', $blogs);
