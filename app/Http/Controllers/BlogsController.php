@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 
 use App\Blog;
+use App\User;
 use Request;
 use App\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
@@ -22,7 +23,8 @@ class BlogsController extends Controller{
 
   public function show($id){
     $blog = Blog::findOrFail($id);
-    return view('blogs.show')->with('blog', $blog);
+    $user = User::findOrFail($blog->user_id);
+    return view('blogs.show')->with('blog', $blog)->with('user', $user);
   }
 
   public function edit($id){
