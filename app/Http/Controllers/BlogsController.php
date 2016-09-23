@@ -35,8 +35,13 @@ class BlogsController extends Controller{
   }
 
   public function store(BlogRequest $request){
-    $input = Request::all();
-    Blog::create($input);
+
+    $blog = new Blog();
+    $blog->title = $request->get('title');
+		$blog->text = $request->get('text');
+    $blog->user_id = $request->user()->id;
+
+    $blog->save();
     return redirect('blogs');
   }
 
@@ -48,8 +53,7 @@ class BlogsController extends Controller{
 
   public function destroy($id){
     Blog::destroy($id);
-    return redirect('blogs');    
+    return redirect('blogs');
   }
-
 
 }

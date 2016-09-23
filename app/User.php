@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -16,8 +17,9 @@ class User extends Authenticatable
      */
 
     public function blogs(){
-       return $this->hasMany('App\Blog');
-    }   
+       //return $this->hasMany('App\Blog');
+       return $this->hasMany('App\Blog', 'user_id');
+    }
 
     protected $fillable = [
         'name', 'email', 'password',
