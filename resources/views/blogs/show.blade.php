@@ -3,7 +3,8 @@
 @section('content')
   @include('partials.errors')
   <h2>{{ $blog->title }}</h2>
-  <p>By {{ $user->name }}</p>
+  
+  <p>By {{ $user->email }}</p>
 
   <p> {{ $blog->text }}</p>
 
